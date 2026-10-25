@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Capsules | Time Capsule</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Archivo+Black&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="my-capsules-page">
+
+    <!-- Navigation -->
+    <nav class="capsules-nav">
+        <a href="{{ url_for('home') }}" class="capsules-brand">
+            Time Capsule
+        </a>
+
+        <div class="capsules-nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('my_capsules') }}">My Capsules</a>
+            <a href="{{ url_for('create_capsule') }}">Create Capsule</a>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="my-capsules-main">
+
+        <!-- Exactly two decorative circles -->
+        <div class="capsules-circle capsules-circle-pink"></div>
+        <div class="capsules-circle capsules-circle-blue"></div>
+
+        <section class="capsules-heading">
+            <p class="capsules-eyebrow">YOUR PERSONAL COLLECTION</p>
+
+            <h1>My <span>Capsules</span></h1>
+
+            <p class="capsules-subtitle">
+                Every capsule holds a memory waiting for its moment.
+            </p>
+
+            <a href="{{ url_for('create_capsule') }}"
+               class="capsules-create-button">
+                + Create a Capsule
+            </a>
+        </section>
+
+        <!-- Capsule collection -->
+        <section class="capsules-content">
+
+            <div class="capsules-section-heading">
+                <h2>Your Memories</h2>
+            </div>
+
+            {% if capsules %}
+
+                <div class="capsules-grid">
+
+                    {% for capsule in capsules %}
+
+                        <article class="capsule-card">
+
+                            <div class="capsule-card-top">
+                                <span class="capsule-card-label">
+                                    TIME CAPSULE
+                                </span>
+
+                                <span class="capsule-card-mark"></span>
+                            </div>
+
+                            <h3>{{ capsule['title'] }}</h3>
+
+                            <p class="capsule-description">
+                                {{ capsule['description'] or 'A special memory saved for the future.' }}
+                            </p>
+
+                            <div class="capsule-date">
+                                <span>UNLOCK DATE</span>
+                                <strong>{{ capsule['unlock_date'] }}</strong>
+                            </div>
+
+                            <a href="{{ url_for('view_capsule', capsule_id=capsule['capsule_id']) }}"
+                               class="capsule-open-button">
+                                View Capsule <span>→</span>
+                            </a>
+                            
+                            <form
+                                action="{{ url_for('delete_capsule', capsule_id=capsule['capsule_id']) }}"
+                                method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this capsule? This cannot be undone.');"
+                            >
+                                <button type="submit" class="delete-capsule-button">
+                                    Delete Capsule
+                                </button>
+                            </form>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="capsules-empty-card">
+                    <div class="capsules-empty-icon">✉</div>
+
+                    <h2>Your story starts here</h2>
+
+                    <p>
+                        You haven't created any capsules yet.
+                        Save a memory today and open it in the future.
+                    </p>
+
+                    <a href="{{ url_for('create_capsule') }}"
+                       class="capsules-create-button">
+                        Create Your First Capsule
+                    </a>
+                </div>
+
+            {% endif %}
+
+        </section>
+
+        <footer class="capsules-footer">
+            A little space for your past, present &amp; future.
+        </footer>
+
+    </main>
+
+</body>
+</html>
