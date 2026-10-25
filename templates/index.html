@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Time Capsule</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+             Time Capsule
+        </div>
+
+        
+<div class="nav-links">
+    <a href="/">Home</a>
+    <a href="#about">About</a>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+    <a href="/my-capsules">My Capsules</a>
+    <a href="/create-capsule" class="nav-button">
+        Create Capsule
+    </a>
+</div>
+
+
+    </nav>
+
+
+<!-- Hero Section -->
+<section class="hero">
+
+    <div class="hero-content">
+
+<h1 class="colorful-headline">
+    <span class="c1">S</span><span class="c2">a</span><span class="c3">v</span><span class="c4">e</span>
+    <span class="c5"> </span><span class="c6">T</span><span class="c7">o</span><span class="c8">d</span><span class="c9">a</span><span class="c10">y</span><span class="c11">.</span>
+    <br>
+    <span class="c3">D</span><span class="c2">i</span><span class="c4">s</span><span class="c6">c</span><span class="c8">o</span><span class="c1">v</span><span class="c7">e</span><span class="c9">r</span>
+    <br>
+    <span class="c4">T</span><span class="c6">o</span><span class="c1">m</span><span class="c8">o</span><span class="c3">r</span><span class="c7">r</span><span class="c2">o</span><span class="c9">w</span><span class="c5">.</span>
+</h1>
+
+        <p class="description">
+            Create your personal digital time capsule.
+            Save your photos, documents, and special memories
+            and unlock them on a date you choose.
+        </p>
+
+        <a href="/create-capsule" class="main-button">
+            Create Your Capsule
+        </a>
+
+    </div>
+
+</section>
+ 
+<!-- About Section -->
+<section id="about" class="about-section">
+
+    <div class="about-heading">
+        <p class="about-eyebrow">A LITTLE PLACE FOR YOUR MEMORIES</p>
+        <h2>Yesterday, Today & <span>Tomorrow.</span></h2>
+        <p class="about-intro">
+            Some moments are too precious to forget.
+            Give them a little home today, and let your future self
+            rediscover them when the time is right.
+        </p>
+    </div>
+
+        <div class="about-cards">
+
+        <div class="about-card">
+            <img src="{{ url_for('static', filename='memories.jpg') }}"
+             alt="Saved memories"
+             class="feature-image">
+            <h3>Save Your Moments</h3>
+            <p>
+                Keep your favourite memories, photographs,
+                letters, and little pieces of your life together
+                in one special place.
+            </p>
+        </div>
+
+
+        <div class="about-card">
+            <img src="{{ url_for('static', filename='lock.jpg') }}"
+             alt="A locked time capsule"
+             class="feature-image">
+
+            <h3>Write to Your Future</h3>
+            <p>
+                Leave a letter for the person you will become.
+                Share your dreams, hopes and promises
+                to your future self.
+            </p>
+        </div>
+
+
+        <div class="about-card">
+            <img src="{{ url_for('static', filename='future-letter.jpg') }}"
+             alt="A letter to my future self"
+             class="feature-image">
+
+            <h3>Open When the Time Comes</h3>
+            <p>
+                Choose a future date and give your memories
+                a chance to surprise you when you least
+                expect it.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>
