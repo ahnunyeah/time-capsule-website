@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Time Capsule</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="register-page">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Time Capsule</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="register-section">
+
+         <div class="register-card">
+
+            <div class="register-icon">📩</div>
+
+            <p class="register-eyebrow">YOUR STORY STARTS HERE</p>
+
+            <h1>Create Your <span>Account</span></h1>
+
+            <p class="register-subtitle">
+                Make a little space for today's memories
+                and tomorrow's surprises.
+            </p>
+
+            <form method="POST" class="register-form">
+
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Choose a username"
+                    autocomplete="username"
+                    required
+                >
+
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="password">Create a password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Choose a secure password"
+                    autocomplete="new-password"
+                    required
+                >
+
+                <button type="submit" class="register-button">
+                    Create My Account
+                </button>
+
+            </form>
+
+            <div class="register-divider"></div>
+
+            <p class="register-login">
+                Already have an account?
+                <a href="/login">Login here</a>
+            </p>
+
+            <p class="register-footer">
+                Every beautiful memory begins somewhere.
+            </p>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
