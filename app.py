@@ -114,23 +114,15 @@ def forgot_password():
             (email,)
         ).fetchone()
         connection.close()
-
-        print("DEBUG: Forgot-password route reached", flush=True)
-        print("DEBUG: Account found:", bool(user), flush=True)
-
+        
         if user:
-            print("DEBUG: Entered user block", flush=True)
-
+            
             code = secrets.token_urlsafe(16)
 
             reset_codes[code] = {
                 "user_id": user["user_id"],
                 "created_at": __import__("time").time()
             }
-
-            print("DEBUG: GENERATED RESET CODE =", repr(code), flush=True)
-        else:
-            print("DEBUG: No matching account found", flush=True)
 
         return redirect(url_for("reset_password"))
 
