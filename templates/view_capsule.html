@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ capsule['title'] }} | Personal Time Capsule</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="view-capsule-page">
+
+    <nav class="view-capsule-nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('my_capsules') }}">My Capsules</a>
+        <a href="{{ url_for('create_capsule') }}">Create Capsule</a>
+    </nav>
+
+    <main class="view-capsule-container">
+
+        <header class="view-capsule-header">
+            <p class="view-capsule-label">YOUR PERSONAL TIME CAPSULE</p>
+
+            <h1>{{ capsule['title'] }}</h1>
+
+            {% if capsule['description'] %}
+                <p class="view-capsule-description">
+                    {{ capsule['description'] }}
+                </p>
+            {% endif %}
+        </header>
+
+        <section class="view-capsule-message">
+            <h2>Your Message</h2>
+
+            <p>{{ capsule['message'] or 'No message added.' }}</p>
+        </section>
+
+        {% if files %}
+            <section class="view-capsule-memories">
+
+                <h2>Your Memories</h2>
+
+                <p class="view-capsule-section-description">
+                    The memories you saved inside this capsule.
+                </p>
+
+                <div class="view-capsule-attachments">
+
+                    {% for file in files %}
+                        <div class="view-capsule-attachment">
+
+                            {% if file['file_type'] == 'image' %}
+                                <img
+                                    src="{{ url_for('capsule_file', file_id=file['file_id']) }}"
+                                    alt="{{ file['file_name'] }}"
+                                    class="view-capsule-image"
+                                >
+
+                            {% elif file['file_type'] == 'video' %}
+                                <video class="view-capsule-video" controls>
+                                    <source src="{{ url_for('capsule_file', file_id=file['file_id']) }}">
+                                    Your browser does not support video playback.
+                                </video>
+                            {% endif %}
+
+                            <p class="view-capsule-file-name">
+                                {{ file['file_name'] }}
+                            </p>
+
+                            <a
+                                href="{{ url_for('capsule_file', file_id=file['file_id']) }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="view-capsule-file-link"
+                            >
+                                {% if file['file_type'] == 'pdf' %}
+                                    Open PDF
+                                {% elif file['file_type'] == 'image' %}
+                                    View Image
+                                {% else %}
+                                    Open Video
+                                {% endif %}
+                            </a>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </section>
+        {% endif %}
+
+        <div class="view-capsule-date">
+            <span>UNLOCK DATE</span>
+            <p>{{ capsule['unlock_date'] }}</p>
+        </div>
+
+        <a
+            href="{{ url_for('my_capsules') }}"
+            class="view-capsule-back"
+        >
+            ← Back to My Capsules
+        </a>
+
+        <footer class="view-capsule-footer">
+            Save today. Discover tomorrow.
+        </footer>
+
+    </main>
+
+</body>
+</html>
