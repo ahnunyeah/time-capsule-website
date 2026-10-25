@@ -16,7 +16,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024  # 100 MB total per request
 
 # Required for login sessions #
-app.secret_key = "time_capsule_secret_key"
+app.secret_key = os.environ.get("SECRET_KEY")
 
 DATABASE = "time_capsule.db"
 
