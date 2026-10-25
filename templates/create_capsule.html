@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create a Time Capsule | Time Capsule</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="create-capsule-page">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Time Capsule</div>
+
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('my_capsules') }}">My Capsules</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Create Capsule Section -->
+    <section class="create-capsule-section">
+
+        <div class="create-capsule-card">
+
+            <div class="create-capsule-icon">📦</div>
+
+            <p class="create-eyebrow">A LITTLE GIFT FOR YOUR FUTURE SELF</p>
+
+            <h1>Save Today.<br><span>Open Tomorrow.</span></h1>
+
+            <p class="create-subtitle">
+                Capture the moments, dreams, and feelings
+                you want your future self to remember.
+            </p>
+
+            <form method="POST" enctype="multipart/form-data" class="create-capsule-form">
+
+                <label for="title">Give your capsule a name</label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="e.g. My College Memories"
+                    required
+                >
+
+                <label for="description">What's inside?</label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Describe the memories you're saving..."
+                    rows="3"
+                ></textarea>
+
+                <label for="message">A letter to your future self</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write a little note for the person you'll become..."
+                    rows="5"
+                ></textarea>
+
+                <label for="unlock_date">When should it be unlocked?</label>
+
+                <input
+                    type="date"
+                    id="unlock_date"
+                    name="unlock_date"
+                    required
+                >
+
+                <p class="create-hint">
+                    Choose a date that will make this memory special.
+                </p>
+
+                <label for="capsule_files">Add photos, PDFs, and videos</label>
+
+                <input
+                    type="file"
+                    id="capsule_files"
+                    name="capsule_files"
+                    accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.mp4,.webm,.mov"
+                    multiple
+                >
+
+                <p class="create-hint">
+                    Attach PDFs, photos, and videos to your capsule.
+                    You can select multiple files.
+                </p>
+                
+                <button type="submit" class="seal-capsule-button">
+                    Seal My Capsule
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
