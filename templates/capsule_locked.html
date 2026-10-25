@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Capsule Locked | Personal Time Capsule</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="capsule-locked-page">
+
+    <nav class="locked-nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('my_capsules') }}">My Capsules</a>
+        <a href="{{ url_for('create_capsule') }}">Create Capsule</a>
+    </nav>
+
+    <main class="locked-container">
+
+        <section class="locked-card">
+
+            <div class="locked-icon">📩</div>
+
+            <p class="locked-label">A MEMORY FROM YOUR FUTURE</p>
+
+            <h1>This memory is still waiting</h1>
+
+            <p class="locked-intro">
+                Some memories are worth waiting for.
+            </p>
+
+            <div class="locked-capsule-info">
+                <span class="locked-small-label">YOUR TIME CAPSULE</span>
+
+                <h2>{{ capsule['title'] }}</h2>
+            </div>
+
+            <div class="locked-date-box">
+                <span class="locked-small-label">UNLOCK DATE</span>
+
+                <p class="locked-date">{{ capsule['unlock_date'] }}</p>
+
+                <p class="locked-date-note">
+                    Come back on or after this date to open your memory.
+                </p>
+            </div>
+
+            <a
+                href="{{ url_for('my_capsules') }}"
+                class="locked-back-button"
+            >
+                ← Back to My Capsules
+            </a>
+
+            <footer class="locked-footer">
+                Save today. Discover tomorrow.
+            </footer>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
